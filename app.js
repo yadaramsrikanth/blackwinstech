@@ -33,7 +33,7 @@ const contactSchema=joi.object({
 
 
 const idSchema=joi.object({
-    contact_id:joi.number().integer().positive().required()
+    id:joi.number().integer().positive().required()
 })
 
 const searchSchema=joi.object({
@@ -108,10 +108,10 @@ if(error){
 }
 
         const {id}=request.params
-        const idnum=parseInt(id)
+        
     const contactQuery=`select * from contacts 
     where
-    contact_id=${idnum};`
+    contact_id=${id};`
     const contactItem=await db.get(contactQuery)
     if(!contactItem){
         return response.status(404).json({ error: "Contact not found" });
