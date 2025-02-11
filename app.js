@@ -108,9 +108,10 @@ if(error){
 }
 
         const {id}=request.params
+        const idnum=parseInt(id)
     const contactQuery=`select * from contacts 
     where
-    contact_id=${id};`
+    contact_id=${idnum};`
     const contactItem=await db.get(contactQuery)
     if(!contactItem){
         return response.status(404).json({ error: "Contact not found" });
